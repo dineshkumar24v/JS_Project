@@ -1,0 +1,23 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#ffffff" />
+
+  <!-- Hands -->
+  <path d="M100 200 Q90 180, 120 170 Q140 160, 150 170 Q160 160, 180 170 Q210 180, 200 200" fill="#B0BEC5" />
+
+  <!-- Blood drop shaped like a heart -->
+  <path d="M150 80 
+           C130 110, 100 140, 150 200 
+           C200 140, 170 110, 150 80 Z" 
+        fill="#C62828" />
+
+  <!-- Title -->
+  <text x="150" y="240" font-family="Poppins, sans-serif" font-size="20" fill="#333" text-anchor="middle" font-weight="bold">
+    Gift of Life
+  </text>
+
+  <!-- Tagline -->
+  <text x="150" y="265" font-family="Poppins, sans-serif" font-size="12" fill="#666" text-anchor="middle">
+    One drop, endless hope.
+  </text>
+</svg>

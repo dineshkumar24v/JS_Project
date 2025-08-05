@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Admin Login</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- FontAwesome for Google icon -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-/HcNjU0fOzOPXkxgQ4xZob6bZgGp3bCjEYoDF2ZYk3FpVZyYzBEEjZ+E/8AyKJqczX7MLxBvjc0mNILoJ0AcZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: #f7f7f7;
+    }
+
+    .container {
+      max-width: 400px;
+      padding: 30px;
+      background-color: #fff;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #333;
+    }
+
+    .form-floating {
+      position: relative;
+      margin-bottom: 20px;
+    }
+
+    .form-floating > input {
+      height: 50px;
+      padding: 10px;
+      font-size: 1rem;
+    }
+
+    .form-floating > label {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      transition: all 0.3s ease;
+      background: white;
+      padding: 0 5px;
+      color: #666;
+    }
+
+    .form-floating > input:focus + label,
+    .form-floating > input:not(:placeholder-shown) + label {
+      top: -10px;
+      font-size: 0.75rem;
+      color: #4CAF50;
+    }
+
+    #btn2, #gglLgnBtn {
+      width: 100%;
+      padding: 12px;
+      border-radius: 10px;
+      background-color: #a40000;
+      color: white;
+      font-weight: bold;
+      border: none;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    #btn2:hover,#gglLgnBtn:hover {
+      background-color: #b54141;
+    }
+
+    .social-btns {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .social-btns button {
+      width: 100%;
+      font-weight: normal;
+      padding: 10px 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .social-btns .google-btn {
+      background-color: #a40000;
+    }
+
+    .social-btns .google-btn:hover {
+      background-color: #b54141;
+    }
+
+    .google-icon {
+      margin-right: 10px;
+    }
+    /* home icon css */
+    .home-icon-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 999;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    outline: none;
+  }
+  .home-icon-btn:focus {
+  outline: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  
+}
+.home-icon-btn i {
+  color: #a40000;
+  font-size: 1rem;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.home-icon-btn i:hover {
+  font-size: 1.1rem;
+  transform: scale(1.05);
+}
+
+  </style>
+</head>
+<body>
+  <!-- home button -->
+  <button class="home-icon-btn" onclick="goHome()" title="Home">
+    <i class="fas fa-home"></i>
+  </button>
+
+  <div class="container">
+    <h1>Admin Login</h1>
+
+    <!-- Login Form -->
+    <form id="loginForm">
+      <!-- Floating Label for Email -->
+      <div class="form-floating">
+        <input type="email" id="loginEmail" class="form-control" placeholder=" " required />
+        <label for="loginEmail">Email</label>
+      </div>
+
+      <!-- Floating Label for Password -->
+      <div class="form-floating">
+        <input type="password" id="loginPassword" class="form-control" placeholder=" " required />
+        <label for="loginPassword">Password</label>
+      </div>
+      
+      <button type="submit" id="btn2">Login</button>
+    </form>
+
+    <!-- Google Login Button -->
+    <div class="social-btns">
+      <button class="google-btn btn btn-danger" id="gglLgnBtn">
+        <i class="google-icon fab fa-google" style="font-size: 18px;"></i> Login with Google
+      </button>
+    </div>
+  </div>
+
+  <!-- Firebase SDK (compat for browser projects) -->
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.6.10/firebase-auth-compat.js"></script>
+
+  <script>
+    // home button function
+    function goHome() {
+    window.location.href = "index.html"; // Replace with your actual home page
+  }
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
+      authDomain: "my-1st-login-signup-page.firebaseapp.com",
+      projectId: "my-1st-login-signup-page",
+      storageBucket: "my-1st-login-signup-page.firebasestorage.app",
+      messagingSenderId: "141690543001",
+      appId: "1:141690543001:web:c799c675498bc394d11108"
+    };
+
+    // Initialize Firebase
+    const app = firebase.initializeApp(firebaseConfig);
+    const auth = firebase.auth();
+    const provider = new firebase.auth.GoogleAuthProvider();
+
+    // Handle Email and Password Login
+    document.getElementById('loginForm').addEventListener('submit', function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      if (email === '' || password === '') {
+        alert("Please enter both email and password.");
+        return;
+      }
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("User UID :", user.uid);
+          alert("Login successful! ✅");
+          window.location.href = "adminCRUD.html";  // Redirect to the admin CRUD page
+        })
+        .catch((error) => {
+          const errorCode = error.code;
+          const errorMessage = error.message;
+          console.error("Login error:", errorCode, errorMessage);
+          alert(`Login failed: ${errorMessage} ❌`);
+        });
+    });
+
+    // Handle Google Login
+    document.getElementById('gglLgnBtn').addEventListener('click', function() {
+      firebase.auth().signInWithPopup(provider)
+        .then((result) => {
+          const user = result.user;
+          console.log("Google User logged in:", user);
+          window.location.href = "adminCRUD.html";  // Redirect after Google login
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          alert(`Login failed: ${errorMessage} ❌`);
+        });
+    });
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donor Login</title>
+
+  <!-- Bootstrap & Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-/HcNjU0fOzOPXkxgQ4xZob6bZgGp3bCjEYoDF2ZYk3FpVZyYzBEEjZ+E/8AyKJqczX7MLxBvjc0mNILoJ0AcZA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <style>
+     /* home icon css */
+     .home-icon-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 999;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    outline: none;
+  }
+  .home-icon-btn:focus {
+  outline: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+}
+.home-icon-btn i {
+  color: #a40000;
+  font-size: 1rem;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+.home-icon-btn i:hover {
+  font-size: 1.1rem;
+  transform: scale(1.05);
+}
+    body {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      /* background-color: #f7f7f7; */
+      /* background-image: url(images/bg111.png); */
+      background-image: url(images/signupbg-1255.avif);
+      background-size:cover;
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    .card {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 15px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: translateX(100%); /* Start off screen */
+      animation: slideIn 0.6s ease-out forwards; /* Slide in */
+    }
+
+    /* Slide-in animation */
+    @keyframes slideIn {
+      0% {
+        transform: translateX(100%);
+      }
+      100% {
+        transform: translateX(0);
+      }
+    }
+
+    .form-floating input {
+      border: 1px solid rgb(4, 4, 80);
+      border-radius: 8px;
+    }
+
+    #togglePassword {
+      cursor: pointer;
+      position: absolute;
+      right: 15px;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #6c757d;
+    }
+
+    .google-btn {
+      background-color: #a40000;
+      color: white;
+      font-weight: 400;
+      border: none;
+      border-radius: 8px;
+      padding: 0.5rem 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      width: 100%;
+      transition: background-color 0.3s ease;
+    }
+
+    .google-btn:hover {
+      background-color: #b13434;
+    }
+
+    .google-icon-wrapper {
+      background-color: white;
+      border-radius: 50%;
+      padding: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .google-icon-wrapper img {
+      width: 20px;
+      height: 20px;
+    }
+
+    .form-footer {
+      font-size: 0.875rem;
+    }
+
+    /* Custom Alert Styles (auto-hide) */
+    #loginAlert {
+      transition: all 0.3s ease;
+    }
+
+    #loginAlert.show {
+      display: block !important;
+    }
+
+    .spinner-border {
+      width: 1rem;
+      height: 1rem;
+    }
+    h2{
+      font-size: 1.5rem;
+      color: #a40000;
+    }
+    #btn2{
+      background-color: #a40000;
+    }
+    #btn2:hover{
+      background-color: #b13434;
+    }
+  </style>
+</head>
+<body>
+  <!-- home button -->
+  <button class="home-icon-btn" onclick="goHome()" title="Home">
+    <i class="fas fa-home"></i>
+  </button>
+
+  <div class="card p-4">
+    <h2 class="text-center mb-3">Login to Register as Donor</h2>
+
+    <div id="loginAlert" class="alert alert-danger d-none" role="alert"></div>
+
+    <form id="loginForm">
+      <div class="form-floating mb-3">
+        <input type="email" class="form-control" id="loginEmail" placeholder="Email" required>
+        <label for="loginEmail">Email</label>
+      </div>
+
+      <div class="form-floating mb-1 position-relative">
+        <input type="password" class="form-control" id="loginPassword" placeholder="Password" required>
+        <label for="loginPassword">Password</label>
+        <span id="togglePassword" class="bi bi-eye-fill"></span>
+      </div>
+
+      <div class="text-end mb-3">
+        <a href="#" id="forgotPasswordLink" class="text-decoration-none small">Forgot password?</a>
+      </div>
+
+      <div class="mb-3">
+        <button id="btn2" type="button" class="btn btn-primary w-100">Login</button>
+      </div>
+
+      <div class="text-center form-footer mb-2">
+        Don't have an account? <a href="donorSignUp.html" class="text-decoration-none">Sign up</a>
+      </div>
+
+      <div class="text-center">
+        <button id="gglLgnBtn" type="button" class="google-btn">
+          <span class="google-icon-wrapper">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon">
+          </span>
+          <span>Login with Google</span>
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Forgot Password Modal -->
+  <div class="modal fade" id="forgotPasswordModal" tabindex="-1" aria-labelledby="forgotPasswordModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Reset Password</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <input type="email" class="form-control" id="resetEmail" placeholder="Enter your email" />
+        </div>
+        <div class="modal-footer">
+          <button type="button" id="sendResetBtn" class="btn btn-primary">Send Reset Link</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bootstrap JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Firebase + Logic -->
+  <script type="module">
+    // home button function
+    function goHome() {
+    window.location.href = "index.html"; // Replace with your actual home page
+  }
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup,
+      sendPasswordResetEmail
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
+      authDomain: "my-1st-login-signup-page.firebaseapp.com",
+      projectId: "my-1st-login-signup-page",
+      storageBucket: "my-1st-login-signup-page.firebasestorage.app",
+      messagingSenderId: "141690543001",
+      appId: "1:141690543001:web:c799c675498bc394d11108"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    const loginEmail = document.getElementById('loginEmail');
+    const loginPassword = document.getElementById('loginPassword');
+    const loginBtn = document.getElementById('btn2');
+    const gglBtn = document.getElementById('gglLgnBtn');
+    const alertBox = document.getElementById('loginAlert');
+    const togglePassword = document.getElementById('togglePassword');
+    const forgotPasswordLink = document.getElementById('forgotPasswordLink');
+    const resetEmailInput = document.getElementById('resetEmail');
+    const sendResetBtn = document.getElementById('sendResetBtn');
+
+    function showAlert(message, type = "danger") {
+      alertBox.className = `alert alert-${type}`;
+      alertBox.textContent = message;
+      alertBox.classList.remove("d-none");
+
+      setTimeout(() => {
+        alertBox.classList.add("d-none");
+      }, 4000); // auto hide after 4s
+    }
+
+    function hideAlert() {
+      alertBox.classList.add("d-none");
+      alertBox.textContent = '';
+    }
+
+    function setButtonLoading(button, loading = true, text = "") {
+      if (loading) {
+        button.disabled = true;
+        button.innerHTML = `<span class="spinner-border spinner-border-sm me-2"></span>${text}`;
+      } else {
+        button.disabled = false;
+        button.innerHTML = text;
+      }
+    }
+
+    loginBtn.addEventListener('click', () => {
+      hideAlert();
+      const email = loginEmail.value.trim();
+      const password = loginPassword.value;
+
+      if (!email || !password) {
+        showAlert("Please enter both email and password.");
+        return;
+      }
+
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(email)) {
+        showAlert("Please enter a valid email address.");
+        return;
+      }
+
+      setButtonLoading(loginBtn, true, "Logging in...");
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then(() => {
+          showAlert("Login successful ✅", "success");
+          window.location.href = "donorPostPhtoTofireBase.html";
+        })
+        .catch(error => {
+          showAlert("Login failed: " + error.message);
+        })
+        .finally(() => {
+          setButtonLoading(loginBtn, false, "Login");
+        });
+    });
+
+    gglBtn.addEventListener('click', () => {
+      setButtonLoading(gglBtn, true, "Signing in...");
+
+      signInWithPopup(auth, provider)
+        .then(() => {
+          window.location.href = "donorPostPhtoTofireBase.html";
+        })
+        .catch(error => {
+          showAlert("Google login failed: " + error.message);
+        })
+        .finally(() => {
+          setButtonLoading(gglBtn, false, `<span class="google-icon-wrapper">
+            <img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="Google Icon">
+          </span><span>Login with Google</span>`);
+        });
+    });
+
+    togglePassword.addEventListener('click', () => {
+      const type = loginPassword.type === "password" ? "text" : "password";
+      loginPassword.type = type;
+      togglePassword.classList.toggle('bi-eye-slash-fill');
+      togglePassword.classList.toggle('bi-eye-fill');
+    });
+
+    forgotPasswordLink.addEventListener('click', () => {
+      resetEmailInput.value = loginEmail.value;
+      new bootstrap.Modal(document.getElementById('forgotPasswordModal')).show();
+    });
+
+    sendResetBtn.addEventListener('click', () => {
+      const email = resetEmailInput.value.trim();
+      if (!email) return showAlert("Please enter your email.");
+
+      sendPasswordResetEmail(auth, email)
+        .then(() => {
+          showAlert("Password reset email sent! Check your inbox.");
+          bootstrap.Modal.getInstance(document.getElementById('forgotPasswordModal')).hide();
+        })
+        .catch(error => showAlert("Error: " + error.message));
+    });
+  </script>
+</body>
+</html>

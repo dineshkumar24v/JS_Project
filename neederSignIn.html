@@ -1,0 +1,189 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+
+
+  <style>
+     /* home icon css */
+     .home-icon-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 999;
+    background: white;
+    border: none;
+    border-radius: 50%;
+    padding: 10px;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+    outline: none;
+  }
+  .home-icon-btn:focus {
+  outline: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+  
+}
+.home-icon-btn i {
+  color: #a40000;
+  font-size: 1rem;
+  transition: transform 0.3s ease, font-size 0.3s ease;
+}
+
+.home-icon-btn i:hover {
+  font-size: 1.1rem;
+  transform: scale(1.05);
+}
+    body {
+      height: 90vh;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .container {
+      height: 75vh;
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    }
+    input {
+      padding: 10px 25px;
+      margin: 15px;
+      border-radius: 10px;
+      border: none;
+      border: 1px solid rgb(4, 4, 80);
+    }
+    button {
+      padding: 10px 25px;
+      border-radius: 10px;
+      background-color: rgb(18, 18, 114);
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: 900;
+    }
+    .container2 {
+      display: none;
+    }
+    a, span {
+      padding: 10px;
+      text-decoration: none;
+    }
+    #gglLgnBtn{
+      margin-bottom: 10px;
+    }
+    #guest-login-btn {
+    display: block;
+    margin: 20px auto;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  </style>
+</head>
+<body>
+  <!-- home button -->
+  <button class="home-icon-btn" onclick="goHome()" title="Home">
+    <i class="fas fa-home"></i>
+  </button>
+
+  <h1>Login to search for blood Donor</h1>
+  <div class="container">
+    <h2>Login</h2>
+    <input type="email" id="loginEmail" placeholder="Email" />
+    <input type="password" id="loginPassword" placeholder="Password" />
+    <button id="btn2">Login</button>
+    <span>Don't have an account?</span>
+    <a href="neederSignUp.html" class="">Sign up</a>
+    <button id="gglLgnBtn">Login with Google</button>
+    <a href="finalDonorDetailsPage.html"><button id="guest-login-btn">continue as guest</button></a>
+  </div>  
+
+  <script type="module">
+    // home button function
+    function goHome() {
+    window.location.href = "index.html"; // Replace with your actual home page
+  }
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
+      authDomain: "my-1st-login-signup-page.firebaseapp.com",
+      projectId: "my-1st-login-signup-page",
+      storageBucket: "my-1st-login-signup-page.firebasestorage.app",
+      messagingSenderId: "141690543001",
+      appId: "1:141690543001:web:c799c675498bc394d11108"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const provider = new GoogleAuthProvider();
+
+    
+    const newbtn2 = document.getElementById('btn2');
+    newbtn2.addEventListener('click', () => {
+      const email = document.getElementById('loginEmail').value;
+      const password = document.getElementById('loginPassword').value;
+
+      if (email === '' || password === '') {
+        alert("Please enter both email and password.");
+        return;
+      }
+
+      signInWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          const user = userCredential.user;
+          console.log("User logged in:", user);
+          alert("Login successful! ✅");
+          window.location.href = "finalDonorDetailsPage.html";  // Redirect to donors list page
+        })
+        .catch((error) => {
+          // const errorCode = error.code;
+          // const errorMessage = error.message;
+          console.error("Login error", errorCode, errorMessage);
+          alert(`Login failed: ${errorMessage} ❌`);
+        });
+    });
+
+    const googleLoginBtn = document.getElementById("gglLgnBtn");
+    googleLoginBtn.addEventListener('click', function(){
+      signInWithPopup(auth, provider)
+        .then((result) => {
+          const user = result.user;
+          console.log(user);
+          window.location.href = "finalDonorDetailsPage.html";  // Redirect after Google login
+        })
+        .catch((error) => {
+          const errorMessage = error.message;
+          alert(`Login failed: ${errorMessage} ❌`);
+        });
+    });
+// guest login
+// You need to set a flag in localStorage or sessionStorage when "Continue as Guest" is clicked. Then on the donor page, you check for that flag before rendering cards.
+// Guest login
+document.getElementById("guest-login-btn").addEventListener("click", () => {
+  console.log("Guest login clicked");
+  alert('logged in as guest ✅')
+  localStorage.setItem("guestMode", "true"); // ✅ Set guest flag
+  
+  // Add a custom header for guest access when redirecting
+  const headers = new Headers();
+  headers.append("X-Guest", "true");
+
+  // Now make sure this custom header is sent with requests or handle in Firestore
+  window.location.href = "finalDonorDetailsPage.html"; // Redirect
+});
+
+
+  </script>
+</body>
+</html>

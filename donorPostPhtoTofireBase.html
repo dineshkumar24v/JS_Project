@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Donor Post</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <style>
+    html {
+  scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      padding-top: 60px;
+      /* background-color: rgb(220, 220, 248); */
+      background-image: url(images/bg002.avif);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-attachment: fixed;
+    }
+    h1 {
+      font-family: Verdana, Geneva, Tahoma, sans-serif;
+      font-weight: 800;
+      color: red;
+    }
+    #bgTxt {
+      color: red;
+      font-size: larger;
+    }
+    .container {
+      width: 80%;
+      max-width: 60vw;
+    }
+    .card {
+      font-family: cursive;
+      margin-top: 20px;
+      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+      /* background-color: rgb(230, 230, 228); */
+      text-align: center;
+    }
+    .top-right-container {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    .profile-img {
+      width: 60px;
+      height: 60px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-top: 10px;
+    }
+    .profile-img:hover{
+      cursor: pointer;
+      scale: 1.1;
+    }
+    #loadingSpinner {
+      display: none;
+    }
+    #previewContainer {
+      text-align: center;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="top-right-container">
+    <button id="logoutButton" class="btn btn-danger">Logout</button>
+    <div id="profilePhotoContainer"></div>
+  </div>
+
+  <h1>Donor Registration Form</h1>
+
+  <form id="donorForm" class="container p-4">
+    <!-- Name -->
+    <div class="mb-3 row">
+      <label for="name" class="col-sm-3 col-form-label">Full Name</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="name" id="name" placeholder="Full name" required />
+      </div>
+    </div>
+    <!-- Gender -->
+    <div class="mb-3 row">
+      <label class="col-sm-3 col-form-label">Gender</label>
+      <div class="col-sm-9">
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" id="male" name="gender" value="male" />
+          <label class="form-check-label" for="male">Male♂️</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" id="female" name="gender" value="female" />
+          <label class="form-check-label" for="female">Female♀️</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input type="radio" class="form-check-input" id="others" name="gender" value="others" />
+          <label class="form-check-label" for="others">Others</label>
+        </div>
+      </div>
+    </div>
+    <!-- Age -->
+    <div class="mb-3 row">
+      <label for="age" class="col-sm-3 col-form-label">Age</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" id="age" name="age" required />
+      </div>
+    </div>
+    <!-- Blood Group -->
+    <div class="mb-3 row">
+      <label for="bg" class="col-sm-3 col-form-label">Blood Group🩸</label>
+      <div class="col-sm-9">
+        <select class="form-select" name="bg" id="bg">
+          <option value="">Select</option>
+          <option value="A+">A+</option>
+          <option value="A-">A-</option>
+          <option value="B+">B+</option>
+          <option value="B-">B-</option>
+          <option value="AB+">AB+</option>
+          <option value="AB-">AB-</option>
+          <option value="O+">O+</option>
+          <option value="O-">O-</option>
+        </select>
+      </div>
+    </div>
+    <!-- Phone Number -->
+    <div class="mb-3 row">
+      <label for="tel" class="col-sm-3 col-form-label">Phone Number ☎</label>
+      <div class="col-sm-9">
+        <input type="tel" class="form-control" id="tel" name="tel" required />
+      </div>
+    </div>
+    <!-- Address -->
+    <div class="mb-3 row">
+      <label for="address" class="col-sm-3 col-form-label">Address➤</label>
+      <div class="col-sm-9">
+        <textarea class="form-control" id="address" name="address" rows="4" required></textarea>
+      </div>
+    </div>
+    <!-- Availability -->
+    <div class="mb-3 row">
+      <label for="availability" class="col-sm-3 col-form-label">Availability to donate blood</label>
+      <div class="col-sm-9">
+        <select class="form-select" name="availability" id="availability">
+          <option value="">Select</option>
+          <option value="Available">Available✅</option>
+          <option value="Unavailable">Unavailable❌</option>
+        </select>
+      </div>
+    </div>
+    <!-- Submit -->
+    <div class="mb-3 row">
+      <div class="col-sm-9 offset-sm-3">
+        <button type="submit" class="btn btn-success">Save Details</button>
+      </div>
+    </div>
+  <!-- Upload Photo -->
+  <div class="mb-3">
+    <input type="file" id="fileInput" class="form-control" accept="image/*" />
+    <!-- preview image container, just above the upload button: -->
+    <div id="previewContainer" class="mb-3">
+      <img id="previewImage" src="" class="profile-img border d-none" alt="Preview">
+    </div>
+    <button type="button" id="uploadButton" class="btn btn-primary mt-2">Upload Photo</button>
+    <div id="loadingSpinner" class="spinner-border text-primary mt-2" role="status">
+      <span class="visually-hidden">Uploading...</span>
+    </div>
+  </div>
+</form>
+
+  <!-- <div id="uploadedContent"></div> -->
+
+  <div id="message" class="text-center"></div>
+  <div id="donorCard" class="container p-4"></div>
+
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js";
+    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js";
+    import { getFirestore, doc, getDoc, setDoc } from "https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
+      authDomain: "my-1st-login-signup-page.firebaseapp.com",
+      projectId: "my-1st-login-signup-page",
+      storageBucket: "my-1st-login-signup-page.appspot.com",
+      messagingSenderId: "141690543001",
+      appId: "1:141690543001:web:c799c675498bc394d11108"
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
+    const db = getFirestore(app);
+
+    const messageBox = document.getElementById("message");
+    const donorCardContainer = document.getElementById("donorCard");
+
+    const displayDonorCard = async (userId) => {
+      const donorRef = doc(db, "donors", userId);
+      const docSnap = await getDoc(donorRef);
+      if (docSnap.exists()) {
+        const donor = docSnap.data();
+        donorCardContainer.innerHTML = `
+          <div class="card">
+            <div class="card-body">
+              ${donor.profilePhoto ? `<img src="${donor.profilePhoto}" alt="Profile Photo" class="profile-img">` : ''}
+              <h2 class="card-title"><strong>${donor.name}</strong></h2><hr>
+              <p class="card-text">Gender: <strong>${donor.gender}</strong></p>
+              <p class="card-text">Age:<strong>${donor.age}</strong></p>
+              <p class="card-text" id="bgTxt">Blood Group:<strong>${donor.bg}🩸</strong></p>
+              <p class="card-text">Phone: <strong>${donor.tel}</strong></p>
+              <p class="card-text">Address: <strong>${donor.address}</strong></p>
+              <p class="card-text">Availability: <strong>${donor.availability}</strong></p>
+            </div>
+          </div>
+        `;
+        if (donor.profilePhoto) {
+          document.getElementById("profilePhotoContainer").innerHTML = `<img src="${donor.profilePhoto}" class="profile-img" alt="Profile Photo">`;
+        }
+      }
+    };
+
+    // onAuthStateChanged(auth, (user) => {
+    //   if (donor.profilePhoto) {
+    //     document.getElementById("profilePhotoContainer").innerHTML = `<img src="${donor.profilePhoto}" class="profile-img" alt="Profile Photo" id="profilePicTopRight">`;
+    //   }
+    //   if (!user) {
+    //     window.location.href = "DonorsignIn.html";
+    //   } else {
+    //     displayDonorCard(user.uid);
+    //   }
+    // });
+    onAuthStateChanged(auth, (user) => {
+  if (!user) {
+    window.location.href = "donorLogin.html";
+  } else {
+    const userId = user.uid;
+    const donorRef = doc(db, "donors", userId);
+
+    getDoc(donorRef).then((docSnap) => {
+      if (docSnap.exists()) {
+        const donor = docSnap.data();
+
+        // Insert profile photo into top-right corner
+        // 1️⃣ On profile load (onAuthStateChanged):
+document.getElementById("profilePhotoContainer").innerHTML = `
+  <img src="${donor.profilePhoto}" class="profile-img" alt="Profile Photo" id="profilePicTopRight">
+`;
+document.getElementById("profilePicTopRight").addEventListener("click", () => {
+  document.getElementById("donorCard")?.scrollIntoView({ behavior: "smooth" });
+});
+
+
+        // Now display card
+        const donorCard = `
+          <div class="card">
+            <div class="card-body">
+              ${donor.profilePhoto ? `<img src="${donor.profilePhoto}" alt="Profile Photo" class="profile-img">` : ''}
+              <h2 class="card-title"><strong>${donor.name}</strong></h2><hr>
+              <p class="card-text">Gender: <strong>${donor.gender}</strong></p>
+              <p class="card-text">Age:<strong>${donor.age}</strong> </p>
+              <p class="card-text" id="bgTxt">Blood Group:<strong>${donor.bg}🩸<strong></p>
+              <p class="card-text">Phone: <strong>${donor.tel}</strong></p>
+              <p class="card-text">Address: <strong>${donor.address}</strong></p>
+              <p class="card-text">Availability: <strong>${donor.availability}</strong></p>
+            </div>
+          </div>
+        `;
+        document.getElementById("donorCard").innerHTML = donorCard;
+      }
+    }).catch(error => console.error("Error fetching donor data:", error));
+  }
+});
+
+
+    document.querySelector("#donorForm").addEventListener("submit", async (event) => {
+      event.preventDefault();
+
+      const name = document.querySelector("#name").value.trim();
+      const gender = document.querySelector("input[name='gender']:checked")?.value;
+      const age = parseInt(document.querySelector("#age").value);
+      const bg = document.querySelector("#bg").value;
+      const tel = document.querySelector("#tel").value.trim();
+      const address = document.querySelector("#address").value.trim();
+      const availability = document.querySelector("#availability").value;
+
+      if (age < 18 || age > 65) {
+        alert("Age must be between 18 and 65.");
+        return;
+      }
+      if (!/^\d{10}$/.test(tel)) {
+        alert("Phone number must be 10 digits.");
+        return;
+      }
+
+      const user = auth.currentUser;
+      const userId = user.uid;
+
+      try {
+        await setDoc(doc(db, "donors", userId), {
+          name,
+          gender,
+          age,
+          bg,
+          tel,
+          address,
+          availability,
+          timestamp: new Date()
+        });
+
+        messageBox.innerHTML = "Details saved successfully! ✅";
+        messageBox.style.color = "green";
+        displayDonorCard(userId);
+        document.querySelector("#donorForm").reset();
+        document.querySelector("#uploadedContent").innerHTML = '';
+
+      } catch (error) {
+        console.error("Error saving donor data: ", error);
+        // messageBox.innerHTML = "An error occurred. Please try again ❌.";
+        // messageBox.style.color = "red";
+      }
+    });
+
+    document.querySelector("#uploadButton").addEventListener("click", uploadFile);
+    const cloudName = 'dmrgvxawa';
+    const uploadPreset = 'CloudinaryUploads';
+    // JavaScript — Add Preview Logic
+    // Right above your uploadFile() function, add this:
+    // Show temporary image preview before uploading
+document.getElementById('fileInput').addEventListener('change', function (event) {
+  const file = event.target.files[0];
+  const previewImage = document.getElementById('previewImage');
+
+  if (file && file.type.startsWith('image/')) {
+    const reader = new FileReader();
+    reader.onload = function (e) {
+      previewImage.src = e.target.result;
+      previewImage.classList.remove('d-none');
+    };
+    reader.readAsDataURL(file);
+  } else {
+    previewImage.src = "";
+    previewImage.classList.add('d-none');
+  }
+});
+
+// upload file 
+async function uploadFile() {
+  const file = document.getElementById('fileInput').files[0];
+  if (!file) {
+    alert("Please select a file to upload.");
+    return;
+  }
+
+  const spinner = document.getElementById("loadingSpinner");
+  spinner.style.display = "inline-block";
+
+  const formData = new FormData();
+  formData.append("file", file);
+  formData.append("upload_preset", uploadPreset);
+
+  try {
+    const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/upload`, {
+      method: "POST",
+      body: formData
+    });
+    const data = await response.json();
+    const imageUrl = data.secure_url;
+
+    // Update profile photo in UI
+   // 2️ On image upload:
+document.getElementById("profilePhotoContainer").innerHTML = `
+  <img src="${imageUrl}" class="profile-img" alt="Profile Photo" id="profilePicTopRight">
+`;
+
+document.getElementById("profilePicTopRight").addEventListener("click", () => {
+  document.getElementById("donorCard")?.scrollIntoView({ behavior: "smooth" });
+});
+
+
+
+    // Save to Firestore
+    const user = auth.currentUser;
+    const userId = user.uid;
+    await setDoc(doc(db, "donors", userId), { profilePhoto: imageUrl }, { merge: true });
+
+    // Refresh card
+    displayDonorCard(userId);
+
+    // 💥 Clear preview
+    document.getElementById("previewImage").src = "";
+    document.getElementById("previewImage").classList.add("d-none");
+
+  } catch (error) {
+    console.error("Upload error:", error);
+    alert("Upload failed. Please try again.");
+  } finally {
+    spinner.style.display = "none";
+  }
+}
+
+
+
+    document.querySelector("#logoutButton").addEventListener("click", async () => {
+      try {
+        await signOut(auth);
+        alert("Logged out successfully ✅");
+        window.location.href = "donorLogin.html";
+      } catch (error) {
+        console.error("Logout error:", error);
+      }
+    });
+  </script>
+</body>
+</html>
