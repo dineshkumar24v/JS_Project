@@ -1,154 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign Up page</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Needer Sign Up</title>
 
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <style>
-     /* home icon css */
-     .home-icon-btn {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 999;
-    background: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    outline: none;
-  }
-  .home-icon-btn:focus {
-  outline: none;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  
-}
-.home-icon-btn i {
-  color: #a40000;
-  font-size: 1rem;
-  transition: transform 0.3s ease, font-size 0.3s ease;
-}
+    .home-icon-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 999;
+      background: white;
+      border: none;
+      border-radius: 50%;
+      padding: 10px;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                  rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+                  rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      outline: none;
+    }
+    .home-icon-btn:focus {
+      outline: none;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset,
+                  rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
+    }
+    .home-icon-btn i {
+      color: #a40000;
+      font-size: 1rem;
+      transition: transform 0.3s ease, font-size 0.3s ease;
+    }
+    .home-icon-btn i:hover {
+      font-size: 1.1rem;
+      transform: scale(1.05);
+    }
 
-.home-icon-btn i:hover {
-  font-size: 1.1rem;
-  transform: scale(1.05);
-}
-    .main{
-      height: 90vh;
+    body {
+      font-family: 'Inter', sans-serif;
       display: flex;
       align-items: center;
-      flex-direction: column;
       justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url(images/bg3412.jpg);
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      backdrop-filter: blur(5px);
     }
-    .container{
-      height: 50vh;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      border-radius: 10px;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+
+    .signup-container {
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
+      animation: fadeIn 0.5s ease-in-out;
     }
-    input{
-      padding: 10px 25px;
-      margin: 15px;
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .signup-container h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #a40000;
+      margin-bottom: 10px;
+    }
+
+    .signup-container h2 {
+      font-size: 1.1rem;
+      color: #546e7a;
+      margin-bottom: 25px;
+    }
+
+    .form-floating input {
       border-radius: 10px;
+      border: 1px solid #ced4da;
+    }
+
+    .form-floating label {
+      color: #6c757d;
+    }
+
+    .btn-primary {
+      background-color: #a40000;
       border: none;
-      border: 1px solid rgb(4, 4, 80);
-    }
-    button{
-      padding: 10px 25px;
       border-radius: 10px;
-      background-color: rgb(18, 18, 114);
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: 900;
+      font-weight: 600;
+      padding: 12px;
     }
-    a{
-      padding: 15px;
+
+    .btn-primary:hover {
+      background-color: #b13434;
+    }
+
+    .form-link {
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    .form-link a {
+      color: #2a69ac;
       text-decoration: none;
+      font-weight: 500;
+    }
+
+    .form-link a:hover {
+      text-decoration: underline;
+    }
+
+    .alert {
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .alert.show {
+      display: block;
     }
   </style>
 </head>
 <body>
-  <!-- home button -->
+  <!-- Home button -->
   <button class="home-icon-btn" onclick="goHome()" title="Home">
     <i class="fas fa-home"></i>
   </button>
-  <div class="main">
-  <h1>Signup to login and search for blood Donor</h1>
-  <div class="container">
-    <h2>Sign Up</h2>
-    <input type="email" id="signupEmail" placeholder="Enter Email" />
-    <input type="password" id="signupPassword" placeholder="Enter Password" />
-    <button id="btn1">Sign Up</button>
-    <a href="neederSignIn.html">Sign In</a>
+
+  <div class="signup-container text-center">
+    <h1>Join as Needer</h1>
+    <h2>Sign up to find blood donors</h2>
+
+    <div id="alertBox" class="alert alert-danger"></div>
+
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="signupEmail" placeholder="Enter Email">
+      <label for="signupEmail">Enter Email</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="signupPassword" placeholder="Enter Password">
+      <label for="signupPassword">Enter Password</label>
+    </div>
+
+    <button id="btn1" class="btn btn-primary w-100" type="button">
+      <span id="btnText">Sign Up</span>
+      <span id="spinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+    </button>
+
+    <div class="form-link">
+      Already have an account?
+      <a href="neederSignIn.html">Sign In</a>
+    </div>
   </div>
-</div>
- 
 
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
+    }
+  </script>
 
+  <!-- Firebase Authentication -->
+  <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
-<script type="module">
-  // home button function
-  function goHome() {
-    window.location.href = "index.html"; // Replace with your actual home page
-  }
-  // Import Firebase modules
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
+    const firebaseConfig = {
+      apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
+      authDomain: "my-1st-login-signup-page.firebaseapp.com",
+      projectId: "my-1st-login-signup-page",
+      storageBucket: "my-1st-login-signup-page.firebasestorage.app",
+      messagingSenderId: "141690543001",
+      appId: "1:141690543001:web:c799c675498bc394d11108"
+    };
 
-  import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword} from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    const app = initializeApp(firebaseConfig);
+    const auth = getAuth(app);
 
+    const signupBtn = document.getElementById('btn1');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const emailInput = document.getElementById('signupEmail');
+    const passwordInput = document.getElementById('signupPassword');
+    const alertBox = document.getElementById('alertBox');
 
-  // Your web app's Firebase configuration
-  const firebaseConfig = {
-    apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
-    authDomain: "my-1st-login-signup-page.firebaseapp.com",
-    projectId: "my-1st-login-signup-page",
-    storageBucket: "my-1st-login-signup-page.firebasestorage.app",
-    messagingSenderId: "141690543001",
-    appId: "1:141690543001:web:c799c675498bc394d11108"
-  };
+    function showAlert(message, type = 'danger') {
+      alertBox.className = `alert alert-${type} show`;
+      alertBox.innerText = message;
+      setTimeout(() => {
+        alertBox.classList.remove('show');
+      }, 4000);
+    }
 
-  // Initialize Firebase
-  const app = initializeApp(firebaseConfig);
+    signupBtn.addEventListener('click', () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
 
-  const auth = getAuth(app);
+      if (!email || !password) {
+        showAlert("Please fill in all fields.");
+        return;
+      }
 
+      // Loading state
+      signupBtn.disabled = true;
+      btnText.textContent = "Signing up...";
+      spinner.classList.remove("d-none");
 
+      createUserWithEmailAndPassword(auth, email, password)
+        .then((userCredential) => {
+          showAlert("Signup successful! Redirecting...", "success");
+          emailInput.value = "";
+          passwordInput.value = "";
 
-  var newbtn1=document.getElementById('btn1')
-
-  newbtn1.addEventListener('click', ()=>{
-    var email=document.getElementById('signupEmail').value
-    var password=document.getElementById('signupPassword').value
-    console.log(email, password)
-
-    createUserWithEmailAndPassword(auth, email, password)
-              .then((userCredential) => {
-                  const user = userCredential.user;
-                  console.log("User signed up:", user);
-                  alert("Signup successful! ✅");
-
-                  // Clear the input fields
-      document.getElementById('signupEmail').value = "";
-      document.getElementById('signupPassword').value = "";
-
-              })
-              .catch((error) => {
-                  const errorCode = error.code;
-                  const errorMessage = error.message;
-                  console.error("Signup error", errorCode, errorMessage);
-                  alert(`Signup failed: ${errorMessage} ❌`);
-              });
-
-  })
-
-
-</script>
+          setTimeout(() => {
+            window.location.href = "neederSignIn.html";
+          }, 2000);
+        })
+        .catch((error) => {
+          showAlert("Signup failed: " + error.message);
+        })
+        .finally(() => {
+          signupBtn.disabled = false;
+          btnText.textContent = "Sign Up";
+          spinner.classList.add("d-none");
+        });
+    });
+  </script>
 </body>
 </html>
