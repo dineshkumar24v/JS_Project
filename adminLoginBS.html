@@ -140,7 +140,7 @@
 </head>
 <body>
   <!-- home button -->
-  <button class="home-icon-btn" onclick="goHome()" title="Home">
+  <button class="home-icon-btn" id="homeButton" title="Home">
     <i class="fas fa-home"></i>
   </button>
 
@@ -178,9 +178,9 @@
 
   <script>
     // home button function
-    function goHome() {
-    window.location.href = "index.html"; // Replace with your actual home page
-  }
+    document.getElementById('homeButton').addEventListener('click', () => {
+  window.location.href = "index.html";
+});
     // Firebase config
     const firebaseConfig = {
       apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
