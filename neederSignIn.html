@@ -1,119 +1,186 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sign In</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Needer Sign In</title>
 
+  <!-- Bootstrap & Fonts -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
-
   <style>
-     /* home icon css */
-     .home-icon-btn {
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 999;
-    background: white;
-    border: none;
-    border-radius: 50%;
-    padding: 10px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-    outline: none;
-  }
-  .home-icon-btn:focus {
-  outline: none;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-  
-}
-.home-icon-btn i {
-  color: #a40000;
-  font-size: 1rem;
-  transition: transform 0.3s ease, font-size 0.3s ease;
-}
-
-.home-icon-btn i:hover {
-  font-size: 1.1rem;
-  transform: scale(1.05);
-}
     body {
-      height: 90vh;
+      font-family: 'Inter', sans-serif;
       display: flex;
       align-items: center;
-      flex-direction: column;
       justify-content: center;
+      height: 100vh;
+      margin: 0;
+      background-image: url(images/bg2132.jpg);
+      background-size: cover;
+      background-position: center;
+      backdrop-filter: blur(5px);
     }
-    .container {
-      height: 75vh;
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-      justify-content: center;
-      border-radius: 10px;
-      box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-    }
-    input {
-      padding: 10px 25px;
-      margin: 15px;
-      border-radius: 10px;
+
+    .home-icon-btn {
+      position: fixed;
+      top: 15px;
+      left: 15px;
+      z-index: 999;
+      background: white;
       border: none;
-      border: 1px solid rgb(4, 4, 80);
-    }
-    button {
-      padding: 10px 25px;
-      border-radius: 10px;
-      background-color: rgb(18, 18, 114);
-      color: white;
-      border: none;
-      cursor: pointer;
-      font-weight: 900;
-    }
-    .container2 {
-      display: none;
-    }
-    a, span {
+      border-radius: 50%;
       padding: 10px;
-      text-decoration: none;
+      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+                  rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+                  rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+      outline: none;
     }
-    #gglLgnBtn{
+
+    .home-icon-btn i {
+      color: #a40000;
+      font-size: 1rem;
+      transition: transform 0.3s ease, font-size 0.3s ease;
+    }
+
+    .home-icon-btn i:hover {
+      font-size: 1.1rem;
+      transform: scale(1.05);
+    }
+
+    .signup-container {
+      background-color: #ffffff;
+      padding: 40px 30px;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 420px;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .signup-container h1 {
+      font-size: 1.8rem;
+      font-weight: 600;
+      color: #a40000;
       margin-bottom: 10px;
     }
+
+    .signup-container h2 {
+      font-size: 1.1rem;
+      color: #546e7a;
+      margin-bottom: 25px;
+    }
+
+    .form-floating input {
+      border-radius: 10px;
+      border: 1px solid #ced4da;
+    }
+
+    .btn-primary {
+      background-color: #a40000;
+      border: none;
+      border-radius: 10px;
+      font-weight: 600;
+      padding: 12px;
+    }
+
+    .btn-primary:hover {
+      background-color: #b13434;
+    }
+
+    .btn-secondary {
+      border-radius: 10px;
+      padding: 10px;
+    }
+
+    .form-link {
+      margin-top: 20px;
+      font-size: 0.95rem;
+    }
+
+    .form-link a {
+      color: #2a69ac;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .form-link a:hover {
+      text-decoration: underline;
+    }
+
+    .alert {
+      margin-bottom: 20px;
+      display: none;
+    }
+
+    .alert.show {
+      display: block;
+    }
+
     #guest-login-btn {
-    display: block;
-    margin: 20px auto;
-    padding: 10px 20px;
-    font-size: 16px;
-    cursor: pointer;
-  }
+      margin-top: 15px;
+    }
   </style>
 </head>
 <body>
-  <!-- home button -->
+  <!-- Home Button -->
   <button class="home-icon-btn" onclick="goHome()" title="Home">
     <i class="fas fa-home"></i>
   </button>
 
-  <h1>Login to search for blood Donor</h1>
-  <div class="container">
-    <h2>Login</h2>
-    <input type="email" id="loginEmail" placeholder="Email" />
-    <input type="password" id="loginPassword" placeholder="Password" />
-    <button id="btn2">Login</button>
-    <span>Don't have an account?</span>
-    <a href="neederSignUp.html" class="">Sign up</a>
-    <button id="gglLgnBtn">Login with Google</button>
-    <a href="finalDonorDetailsPage.html"><button id="guest-login-btn">continue as guest</button></a>
-  </div>  
+  <div class="signup-container text-center">
+    <h1>Welcome Back</h1>
+    <h2>Login to find donors</h2>
+
+    <div id="alertBox" class="alert alert-danger"></div>
+
+    <div class="form-floating mb-3">
+      <input type="email" class="form-control" id="loginEmail" placeholder="Enter Email">
+      <label for="loginEmail">Email</label>
+    </div>
+
+    <div class="form-floating mb-3">
+      <input type="password" class="form-control" id="loginPassword" placeholder="Enter Password">
+      <label for="loginPassword">Password</label>
+    </div>
+
+    <button id="btn2" class="btn btn-primary w-100" type="button">
+      <span id="btnText">Login</span>
+      <span id="spinner" class="spinner-border spinner-border-sm ms-2 d-none" role="status" aria-hidden="true"></span>
+    </button>
+
+    <div class="form-link mt-3">
+      Don't have an account? <a href="neederSignUp.html">Sign Up</a>
+    </div>
+
+    <button id="gglLgnBtn" class="btn btn-outline-danger w-100 mt-3">
+      <i class="fab fa-google me-2"></i>Login with Google
+    </button>
+
+    <button id="guest-login-btn" class="btn btn-secondary w-100 mt-3">Continue as Guest</button>
+  </div>
+
+  <script>
+    function goHome() {
+      window.location.href = "index.html";
+    }
+  </script>
 
   <script type="module">
-    // home button function
-    function goHome() {
-    window.location.href = "index.html"; // Replace with your actual home page
-  }
     import { initializeApp } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-app.js";
-    import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
+    import {
+      getAuth,
+      signInWithEmailAndPassword,
+      GoogleAuthProvider,
+      signInWithPopup
+    } from "https://www.gstatic.com/firebasejs/11.0.1/firebase-auth.js";
 
     const firebaseConfig = {
       apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
@@ -128,62 +195,64 @@
     const auth = getAuth(app);
     const provider = new GoogleAuthProvider();
 
-    
-    const newbtn2 = document.getElementById('btn2');
-    newbtn2.addEventListener('click', () => {
-      const email = document.getElementById('loginEmail').value;
-      const password = document.getElementById('loginPassword').value;
+    const loginBtn = document.getElementById('btn2');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const emailInput = document.getElementById('loginEmail');
+    const passwordInput = document.getElementById('loginPassword');
+    const alertBox = document.getElementById('alertBox');
 
-      if (email === '' || password === '') {
-        alert("Please enter both email and password.");
+    function showAlert(message, type = 'danger') {
+      alertBox.className = `alert alert-${type} show`;
+      alertBox.innerText = message;
+      setTimeout(() => alertBox.classList.remove('show'), 4000);
+    }
+
+    loginBtn.addEventListener('click', () => {
+      const email = emailInput.value.trim();
+      const password = passwordInput.value.trim();
+
+      if (!email || !password) {
+        showAlert("Please enter both email and password.");
         return;
       }
 
+      loginBtn.disabled = true;
+      btnText.textContent = "Logging in...";
+      spinner.classList.remove("d-none");
+
       signInWithEmailAndPassword(auth, email, password)
-        .then((userCredential) => {
-          const user = userCredential.user;
-          console.log("User logged in:", user);
-          alert("Login successful! ✅");
-          window.location.href = "finalDonorDetailsPage.html";  // Redirect to donors list page
+        .then(() => {
+          showAlert("Login successful! Redirecting...", "success");
+          setTimeout(() => {
+            window.location.href = "finalDonorDetailsPage.html";
+          }, 1500);
         })
         .catch((error) => {
-          // const errorCode = error.code;
-          // const errorMessage = error.message;
-          console.error("Login error", errorCode, errorMessage);
-          alert(`Login failed: ${errorMessage} ❌`);
+          showAlert(`Login failed: ${error.message}`);
+        })
+        .finally(() => {
+          loginBtn.disabled = false;
+          btnText.textContent = "Login";
+          spinner.classList.add("d-none");
         });
     });
 
-    const googleLoginBtn = document.getElementById("gglLgnBtn");
-    googleLoginBtn.addEventListener('click', function(){
+    document.getElementById("gglLgnBtn").addEventListener('click', () => {
       signInWithPopup(auth, provider)
-        .then((result) => {
-          const user = result.user;
-          console.log(user);
-          window.location.href = "finalDonorDetailsPage.html";  // Redirect after Google login
+        .then(() => {
+          window.location.href = "finalDonorDetailsPage.html";
         })
         .catch((error) => {
-          const errorMessage = error.message;
-          alert(`Login failed: ${errorMessage} ❌`);
+          showAlert(`Google login failed: ${error.message}`);
         });
     });
-// guest login
-// You need to set a flag in localStorage or sessionStorage when "Continue as Guest" is clicked. Then on the donor page, you check for that flag before rendering cards.
-// Guest login
-document.getElementById("guest-login-btn").addEventListener("click", () => {
-  console.log("Guest login clicked");
-  alert('logged in as guest ✅')
-  localStorage.setItem("guestMode", "true"); // ✅ Set guest flag
-  
-  // Add a custom header for guest access when redirecting
-  const headers = new Headers();
-  headers.append("X-Guest", "true");
 
-  // Now make sure this custom header is sent with requests or handle in Firestore
-  window.location.href = "finalDonorDetailsPage.html"; // Redirect
-});
-
-
+    document.getElementById("guest-login-btn").addEventListener("click", () => {
+      localStorage.setItem("guestMode", "true");
+      alert('Logged in as guest ✅');
+      window.location.href = "finalDonorDetailsPage.html";
+    });
   </script>
 </body>
 </html>
