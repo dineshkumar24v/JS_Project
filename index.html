@@ -177,7 +177,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item text-danger" href="#"
+                  <a class="dropdown-item text-danger" href="#about"
                     ><i class="fas fa-info-circle me-2 text-danger"></i>About</a
                   >
                 </li>
@@ -354,14 +354,91 @@
       </div>
     </div>
 
-    <!-- Contact Section -->
-    <div class="container py-5">
+    <!-- About Us Section -->
+    <section id="about" class="about-us py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center text-danger mb-4">About Us</h2>
+        <p class="lead text-black">
+          "Gift of Life" is a community-driven platform designed to connect
+          voluntary blood donors with those in urgent need. Our mission is to
+          save lives by making blood donation accessible, efficient, and
+          transparent.
+        </p>
+      </div>
+    </section>
+    <!-- How It Works section -->
+    <section class="how-it-works py-5">
+      <div class="container">
+        <h2 class="text-center text-danger mb-4">How It Works</h2>
+        <div class="row text-center">
+          <div class="col-md-4">
+            <i class="fas fa-user-plus fa-3x text-danger mb-3"></i>
+            <h5>Register</h5>
+            <p>Create an account as a donor or recipient.</p>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-search fa-3x text-danger mb-3"></i>
+            <h5>Search</h5>
+            <p>
+              Find available donors near your location or based on blood group.
+            </p>
+          </div>
+          <div class="col-md-4">
+            <i class="fas fa-heartbeat fa-3x text-danger mb-3"></i>
+            <h5>Connect</h5>
+            <p>Communicate and schedule blood donation appointments.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Blood Facts -->
+    <section class="blood-facts py-5 bg-light">
+      <div class="container">
+        <h2 class="text-center text-danger mb-4">Did You Know?</h2>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">
+            💉 One donation can save up to three lives.
+          </li>
+          <li class="list-group-item">
+            🕒 It only takes about 10 minutes to donate blood.
+          </li>
+          <li class="list-group-item">
+            💖 Blood cannot be manufactured—it can only come from donors.
+          </li>
+        </ul>
+      </div>
+    </section>
+    <!-- ✅ Contact Section -->
+    <div class="container py-5" id="contact">
       <h2 class="text-center text-danger mb-4">Contact Us</h2>
-      <form class="contact-form">
+
+      <form
+        action="https://formsubmit.co/2ed1e46bfb8511547bcd1997a116046c"
+        method="POST"
+        class="contact-form"
+      >
+        <!--  Honeypot anti-spam field -->
+        <input type="text" name="_honey" style="display: none" />
+
+        <!--  Disable CAPTCHA (optional) -->
+        <input type="hidden" name="_captcha" value="false" />
+
+        <!--  Redirect to Thank You page -->
+        <input type="hidden" name="_next" value="thankyou.html" />
+
+        <!--  Email subject (optional) -->
+        <input
+          type="hidden"
+          name="_subject"
+          value="New Contact Form Submission"
+        />
+
         <div class="row">
           <div class="col-md-6">
             <input
               type="text"
+              name="name"
               class="form-control"
               placeholder="Your Name"
               required
@@ -370,18 +447,22 @@
           <div class="col-md-6">
             <input
               type="email"
+              name="email"
               class="form-control"
               placeholder="Your Email"
               required
             />
           </div>
         </div>
+
         <textarea
+          name="message"
           class="form-control mt-3"
           rows="4"
           placeholder="Your Message"
           required
         ></textarea>
+
         <button type="submit" class="btn btn-danger mt-3">Send Message</button>
       </form>
     </div>
