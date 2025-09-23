@@ -1,0 +1,108 @@
+.navbar-custom {
+  background-color: var(--bs-body-bg);
+  border-bottom: 2px solid #a40000;
+  box-shadow: 0 4px 12px rgba(164, 0, 0, 0.1);
+}
+.navbar-brand {
+  font-family: "Georgia", serif;
+  font-weight: bold;
+  font-size: 1.5rem;
+  color: #a40000 !important;
+}
+.navbar-subtitle {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: #6c757d;
+  margin-top: -5px;
+}
+.logo-img {
+  height: 48px;
+  width: auto;
+  margin-right: 12px;
+}
+.brand-container {
+  display: flex;
+  align-items: center;
+}
+.nav-link {
+  color: #a40000 !important;
+  font-weight: 500;
+}
+.theme-toggle-btn {
+  border: none;
+  background: transparent;
+  font-size: 1.2rem;
+  color: #a40000;
+  cursor: pointer;
+}
+@media (max-width: 767px) {
+  .navbar-subtitle {
+    display: none;
+  }
+}
+body {
+  background-color: var(--bs-body-bg);
+}
+.gallery-img {
+  cursor: pointer;
+  border-radius: 10px;
+  transition: transform 0.3s;
+  width: 20rem;
+  height: 10rem;
+}
+.gallery-img:hover {
+  transform: scale(1.05);
+}
+.contact-form input,
+.contact-form textarea {
+  margin-bottom: 15px;
+}
+.carousel-item img {
+  max-height: 75vh; /* 70% of the viewport height */
+  object-fit: fill;
+}
+#photoCarousel {
+}
+/* courousal buttons styling */
+.carousel-control-prev-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23A40000' viewBox='0 0 8 8'%3E%3Cpath d='M5.25 0l-4 4 4 4 1.5-1.5-2.5-2.5 2.5-2.5-1.5-1.5z'/%3E%3C/svg%3E");
+}
+.carousel-control-next-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='%23A40000' viewBox='0 0 8 8'%3E%3Cpath d='M2.75 0l-1.5 1.5 2.5 2.5-2.5 2.5 1.5 1.5 4-4-4-4z'/%3E%3C/svg%3E");
+}
+/* footer  */
+footer {
+  background-color: #343a40;
+  color: white;
+  text-align: center;
+  padding: 20px;
+  margin-top: 50px;
+}
+/* navbar hover options */
+@media (min-width: 992px) {
+  .navbar .dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    visibility: visible;
+    pointer-events: auto;
+  }
+
+  .dropdown-menu {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: all 0.3s ease;
+    visibility: hidden;
+    pointer-events: none;
+  }
+}
+/* button click color effect */
+.dropdown-menu .dropdown-item:active,
+.dropdown-menu .dropdown-item:focus,
+.dropdown-menu .dropdown-item:hover {
+  background-color: #a40000 !important; /* my theme red */
+  color: white !important;
+}
+.dropdown-menu .dropdown-item {
+  transition: background-color 0.2s ease;
+}
