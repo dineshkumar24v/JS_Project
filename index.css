@@ -1,3 +1,9 @@
+body {
+  overflow-x: hidden; /* Prevent horizontal scroll */
+}
+html {
+  scroll-behavior: smooth;
+}
 .navbar-custom {
   background-color: var(--bs-body-bg);
   border-bottom: 2px solid #a40000;
@@ -105,4 +111,34 @@ footer {
 }
 .dropdown-menu .dropdown-item {
   transition: background-color 0.2s ease;
+}
+
+.thank-you {
+  text-align: center;
+  margin-top: 20px;
+  padding: 20px;
+  background: #f3f3f3;
+  border-radius: 8px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+#thankYouMessage {
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
 }

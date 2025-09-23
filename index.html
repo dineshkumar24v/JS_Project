@@ -21,12 +21,21 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css"
     />
+
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+
+    <!-- AOS CSS -->
+<link href="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.css" rel="stylesheet" />
+
+
+
   </head>
   <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-custom py-1">
-      <!-- py = In Bootstrap, py is a shorthand utility class used to apply padding to the vertical sides (top and bottom) of an element -->
       <div class="container">
+      <!-- py = In Bootstrap, py is a shorthand utility class used to apply padding to the vertical sides (top and bottom) of an element -->
         <div class="brand-container">
           <!-- <img src="images/blood drop.png" alt="Logo" class="logo-img"> -->
           <img
@@ -182,7 +191,7 @@
                   >
                 </li>
                 <li>
-                  <a class="dropdown-item text-danger" href="#contact"
+                  <a class="dropdown-item text-danger" href="#contactForm"
                     ><i class="fas fa-envelope me-2 text-danger"></i>Contact</a
                   >
                 </li>
@@ -248,8 +257,8 @@
     </div>
 
     <!-- Gallery -->
-    <div class="container py-5">
-      <h2 class="text-center text-danger mb-4">Blood Donation Gallery</h2>
+    <div class="container py-5" >
+      <h2 class="text-center text-danger mb-4" data-aos="fade-up">Blood Donation Gallery</h2>
       <div class="row g-4">
         <div class="col-sm-6 col-md-4 col-lg-3">
           <a
@@ -261,6 +270,7 @@
               src="images/image (5).jpg"
               class="img-fluid gallery-img"
               alt="Donor 1"
+              data-aos="flip-left"
             />
           </a>
         </div>
@@ -274,6 +284,7 @@
               src="images/image (6).jpg"
               class="img-fluid gallery-img"
               alt="Donor 1"
+              data-aos="flip-left"
             />
           </a>
         </div>
@@ -287,6 +298,7 @@
               src="images/image (8).jpg"
               class="img-fluid gallery-img"
               alt="Donor 1"
+              data-aos="flip-right"
             />
           </a>
         </div>
@@ -300,6 +312,7 @@
               src="images/image (7).jpg"
               class="img-fluid gallery-img"
               alt="Donor 2"
+              data-aos="flip-right"
             />
           </a>
         </div>
@@ -313,6 +326,7 @@
               src="images/img (4).jpg"
               class="img-fluid gallery-img"
               alt="Donor 2"
+              data-aos="flip-left"
             />
           </a>
         </div>
@@ -326,6 +340,7 @@
               src="images/image (19).jpg"
               class="img-fluid gallery-img"
               alt="Donor 2"
+              data-aos="flip-left"
             />
           </a>
         </div>
@@ -339,6 +354,7 @@
               src="images/image (18).jpg"
               class="img-fluid gallery-img"
               alt="Donor 2"
+              data-aos="flip-right"
             />
           </a>
         </div>
@@ -352,6 +368,7 @@
               src="images/image (20).jpg"
               class="img-fluid gallery-img"
               alt="Donor 2"
+              data-aos="flip-right"
             />
           </a>
         </div>
@@ -360,7 +377,7 @@
     </div>
 
     <!-- About Us Section -->
-    <section id="about" class="about-us py-5 bg-light">
+    <section id="about" class="about-us py-5 bg-light" data-aos="zoom-in-up">
       <div class="container">
         <h2 class="text-center text-danger mb-4">About Us</h2>
         <p class="lead text-black">
@@ -372,7 +389,7 @@
       </div>
     </section>
     <!-- How It Works section -->
-    <section class="how-it-works py-5">
+    <section class="how-it-works py-5" data-aos="zoom-out-down">
       <div class="container">
         <h2 class="text-center text-danger mb-4">How It Works</h2>
         <div class="row text-center">
@@ -398,7 +415,7 @@
     </section>
 
     <!-- Blood Facts -->
-    <section class="blood-facts py-5 bg-light">
+    <section class="blood-facts py-5 bg-light" data-aos="zoom-out-left">
       <div class="container">
         <h2 class="text-center text-danger mb-4">Did You Know?</h2>
         <ul class="list-group list-group-flush">
@@ -414,66 +431,47 @@
         </ul>
       </div>
     </section>
-    <!-- ✅ Contact Section -->
-    <div class="container py-5" id="contact">
-      <h2 class="text-center text-danger mb-4">Contact Us</h2>
+    <!-- 2ed1e46bfb8511547bcd1997a116046c -->
+    <!--  Contact Section -->
+    <div class="container py-5">
+  <h2 class="text-center text-danger mb-4">Contact Us</h2>
 
-      <form
-        action="https://formsubmit.co/2ed1e46bfb8511547bcd1997a116046c"
-        method="POST"
-        class="contact-form"
-      >
-        <!--  Honeypot anti-spam field -->
-        <input type="text" name="_honey" style="display: none" />
+  <!--  Contact Form -->
+   <section data-aos="fade-up">
 
-        <!--  Disable CAPTCHA (optional) -->
-        <input type="hidden" name="_captcha" value="false" />
-
-        <!--  Redirect to Thank You page -->
-        <input
-          type="hidden"
-          name="_next"
-          value="https://blood-project.netlify.app/thankyou.html"
-        />
-
-        <!--  Email subject (optional) -->
-        <input
-          type="hidden"
-          name="_subject"
-          value="New Contact Form Submission"
-        />
-
-        <div class="row">
-          <div class="col-md-6">
-            <input
-              type="text"
-              name="name"
-              class="form-control"
-              placeholder="Your Name"
-              required
-            />
-          </div>
-          <div class="col-md-6">
-            <input
-              type="email"
-              name="email"
-              class="form-control"
-              placeholder="Your Email"
-              required
-            />
-          </div>
+     <form id="contactForm" action="https://formsubmit.co/YOUR_EMAIL@example.com" method="POST" class="row g-3 needs-validation animate__animated animate__fadeInUp" style="animation-delay: 0.5s;"  novalidate>
+       <input type="text" name="_honey" style="display:none">
+       <input type="hidden" name="_captcha" value="false" />
+       <input type="hidden" name="_next" value="" />
+       
+       <div class="col-md-6">
+         <input type="text" name="name" class="form-control" placeholder="Your Name" required />
         </div>
+        <div class="col-md-6">
+          <input type="email" name="email" class="form-control" placeholder="Your Email" required />
+        </div>
+  <div class="col-12">
+    <textarea name="message" class="form-control" rows="4" placeholder="Your Message" required></textarea>
+  </div>
+  <div class="col-12 text-center">
+    <button type="submit" class="btn btn-danger px-5">Send Message</button>
+  </div>
+</form>
+</section>
 
-        <textarea
-          name="message"
-          class="form-control mt-3"
-          rows="4"
-          placeholder="Your Message"
-          required
-        ></textarea>
+<!--  Thank You Message -->
+<div id="thankYouMessage" class="d-none text-center py-5 animate__animated animate__zoomIn">
+  <!-- <h1 class="display-4 fw-bold text-success">🎉 Thank You!</h1> -->
+  <!-- <p class="lead">Your message was sent successfully.</p> -->
+   <h2 class="display-4 fw-bold text-danger">🩸 Thank You for Reaching Out!</h2>
+  <p class="lead">Your message has been received, and your willingness to make a difference is truly appreciated.</p>
+  <p class="fw-semibold">Whether you're donating or requesting, you're part of a life-saving journey. ❤️</p>
+  <p>We'll get back to you shortly. Together, we give the gift of life.</p>
+  <canvas id="confetti-canvas"></canvas>
+</div>
 
-        <button type="submit" class="btn btn-danger mt-3">Send Message</button>
-      </form>
+</div>
+
     </div>
 
     <!-- Footer -->
@@ -486,6 +484,9 @@
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+
     <!-- Lightbox Custom Options -->
     <script>
       lightbox.option({
@@ -496,5 +497,14 @@
 
     <!-- Theme Toggle Script -->
     <script src="index.js"></script>
+
+    <!-- AOS JS -->
+    <script src="https://cdn.jsdelivr.net/npm/aos@2.3.4/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 1000, // animation duration in ms
+    once: true      // animate only once
+  });
+</script>
   </body>
 </html>

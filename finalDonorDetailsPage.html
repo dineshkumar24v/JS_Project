@@ -1,303 +1,359 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Donor Details Page</title>
-  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Donor Details Page</title>
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+    />
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background-color: #f9f9f9;
-      background-image: url(images/image\ \(19\).jpg);
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-attachment: fixed;
-      margin-bottom: 2rem;
-    }
-    .card-container {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
-      justify-content: center;
-    }
-    .card {
-      width: 25%;
-      padding: 15px;
-      background: #fff;
-      border-radius: 10px;
-      /* box-shadow: 0 2px 5px rgba(0,0,0,0.2); */
-      box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px, rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
-      transition: 0.3s ease;
-      align-items: center;
-      cursor: pointer;
-      margin: 1rem 1rem;
-    }
-    .card:hover {
-      transform: scale(1.03);
-      background-color: #fceee9;
-    }
-    .card img {
-      border-radius: 50%;
-      width: 100px;
-      height: 100px;
-      object-fit: cover;
-    }
-    .top-right-container {
-      display: flex;
-      justify-content: flex-end;
-      margin: 15px;
-    }
-    #search-form {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 10px;
-      margin: 15px;
-    }
-    #area-suggestions {
-      position: absolute;
-      background: #fff;
-      border: 1px solid #ccc;
-      z-index: 10;
-      max-height: 150px;
-      overflow-y: auto;
-      width: 200px;
-    }
-    #area-suggestions div {
-      padding: 5px;
-      cursor: pointer;
-    }
-    #area-suggestions div:hover {
-      background-color: #eee;
-    }
-    @media (max-width: 768px) {
-      .card { width: 80%; }
-    }
-    @media (max-width: 480px) {
-      .card { width: 95%; }
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Logout Button -->
-  <div class="top-right-container">
-    <button id="logoutButton" class="btn btn-danger">Logout</button>
-  </div>
-
-  <!-- Page Header -->
-  <h2 class="text-center">Donor Details</h2>
-
-  <!-- Search Filters -->
-  <form id="search-form">
-    <select id="bgFilter" class="form-control" style="width: 150px;">
-      <option value="">All Blood Groups</option>
-      <option value="A+">A+</option>
-      <option value="A-">A-</option>
-      <option value="B+">B+</option>
-      <option value="B-">B-</option>
-      <option value="AB+">AB+</option>
-      <option value="AB-">AB-</option>
-      <option value="O+">O+</option>
-      <option value="O-">O-</option>
-    </select>
-    <div style="position: relative;">
-      <input type="text" id="areaFilter" class="form-control" placeholder="Search by area" autocomplete="off" />
-      <div id="area-suggestions"></div>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background-color: #f9f9f9;
+        background-image: url(images/img\ \(19\).jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-attachment: fixed;
+        backdrop-filter: blur(5px);
+        margin-bottom: 1rem;
+      }
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 20px;
+        justify-content: center;
+      }
+      .card {
+        width: 25%;
+        padding: 15px;
+        background: #fff;
+        border-radius: 10px;
+        /* box-shadow: 0 2px 5px rgba(0,0,0,0.2); */
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+          rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+          rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
+        transition: 0.3s ease;
+        align-items: center;
+        cursor: pointer;
+        margin: 1rem 1rem;
+      }
+      .card:hover {
+        transform: scale(1.03);
+        background-color: #fceee9;
+      }
+      .card img {
+        border-radius: 50%;
+        width: 100px;
+        height: 100px;
+        object-fit: cover;
+      }
+      .top-right-container {
+        display: flex;
+        justify-content: flex-end;
+        margin: 15px;
+      }
+      #search-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin: 15px;
+      }
+      #area-suggestions {
+        position: absolute;
+        background: #fff;
+        border: 1px solid #ccc;
+        z-index: 10;
+        max-height: 150px;
+        overflow-y: auto;
+        width: 200px;
+      }
+      #area-suggestions div {
+        padding: 5px;
+        cursor: pointer;
+      }
+      #area-suggestions div:hover {
+        background-color: #eee;
+      }
+      @media (max-width: 768px) {
+        .card {
+          width: 80%;
+        }
+      }
+      @media (max-width: 480px) {
+        .card {
+          width: 95%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Logout Button -->
+    <div class="top-right-container">
+      <button id="logoutButton" class="btn btn-danger">Logout</button>
     </div>
-    <button type="submit" class="btn btn-primary">Search</button>
-    <button type="button" id="clearFilters" class="btn btn-secondary">Clear Filters</button>
-  </form>
 
-  <!-- Loading Text -->
-  <div id="loading" class="text-center" style="display: none;">Loading donors...</div>
+    <!-- Page Header -->
+    <h2 class="text-center">Donor Details</h2>
 
-  <!-- Card Container -->
-  <div id="card-container" class="card-container"></div>
+    <!-- Search Filters -->
+    <form id="search-form">
+      <select id="bgFilter" class="form-control" style="width: 150px">
+        <option value="">All Blood Groups</option>
+        <option value="A+">A+</option>
+        <option value="A-">A-</option>
+        <option value="B+">B+</option>
+        <option value="B-">B-</option>
+        <option value="AB+">AB+</option>
+        <option value="AB-">AB-</option>
+        <option value="O+">O+</option>
+        <option value="O-">O-</option>
+      </select>
+      <div style="position: relative">
+        <input
+          type="text"
+          id="areaFilter"
+          class="form-control"
+          placeholder="Search by area"
+          autocomplete="off"
+        />
+        <div id="area-suggestions"></div>
+      </div>
+      <button type="submit" class="btn btn-primary">Search</button>
+      <button type="button" id="clearFilters" class="btn btn-secondary">
+        Clear Filters
+      </button>
+    </form>
 
-  <!-- Pagination Buttons -->
-  <div id="pagination" class="text-center mt-3"></div>
+    <!-- Loading Text -->
+    <div id="loading" class="text-center" style="display: none">
+      Loading donors...
+    </div>
 
-  <script type="module">
-    // Firebase Imports
-    import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-    import { getFirestore, collection, getDocs } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
-    import { getAuth, onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+    <!-- Card Container -->
+    <div id="card-container" class="card-container"></div>
 
-    // Firebase Configuration
-    const firebaseConfig = {
-      apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
-      authDomain: "my-1st-login-signup-page.firebaseapp.com",
-      projectId: "my-1st-login-signup-page",
-      storageBucket: "my-1st-login-signup-page.appspot.com",
-      messagingSenderId: "141690543001",
-      appId: "1:141690543001:web:c799c675498bc394d11108"
-    };
+    <!-- Pagination Buttons -->
+    <div id="pagination" class="text-center mt-3"></div>
 
-    // Initialize Firebase
-    const app = initializeApp(firebaseConfig);
-    const db = getFirestore(app);
-    const auth = getAuth(app);
+    <script type="module">
+      // Firebase Imports
+      import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+      import {
+        getFirestore,
+        collection,
+        getDocs,
+      } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-firestore.js";
+      import {
+        getAuth,
+        onAuthStateChanged,
+        signOut,
+      } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 
-    // DOM Elements
-    const logoutBtn = document.getElementById("logoutButton");
-    const cardContainer = document.getElementById("card-container");
-    const loading = document.getElementById("loading");
-    const bgFilter = document.getElementById("bgFilter");
-    const areaFilter = document.getElementById("areaFilter");
-    const areaSuggestions = document.getElementById("area-suggestions");
-    const searchForm = document.getElementById("search-form");
-    const clearBtn = document.getElementById("clearFilters");
-    const pagination = document.getElementById("pagination");
+      // Firebase Configuration
+      const firebaseConfig = {
+        apiKey: "AIzaSyByXCNpzcqr1j6czX8WXuOpK1DofNsfYZI",
+        authDomain: "my-1st-login-signup-page.firebaseapp.com",
+        projectId: "my-1st-login-signup-page",
+        storageBucket: "my-1st-login-signup-page.appspot.com",
+        messagingSenderId: "141690543001",
+        appId: "1:141690543001:web:c799c675498bc394d11108",
+      };
 
-    // State
-    let donorsData = [], currentPage = 1, allAreas = [];
-    const itemsPerPage = 6;
+      // Initialize Firebase
+      const app = initializeApp(firebaseConfig);
+      const db = getFirestore(app);
+      const auth = getAuth(app);
 
-    // Auth Check
-    onAuthStateChanged(auth, (user) => {
-      const isGuest = localStorage.getItem("guestMode") === "true";
+      // DOM Elements
+      const logoutBtn = document.getElementById("logoutButton");
+      const cardContainer = document.getElementById("card-container");
+      const loading = document.getElementById("loading");
+      const bgFilter = document.getElementById("bgFilter");
+      const areaFilter = document.getElementById("areaFilter");
+      const areaSuggestions = document.getElementById("area-suggestions");
+      const searchForm = document.getElementById("search-form");
+      const clearBtn = document.getElementById("clearFilters");
+      const pagination = document.getElementById("pagination");
 
-      if (user || isGuest) {
-        if (!isGuest) logoutBtn.style.display = "block";
-        getDataAndRenderCards();
-        if (isGuest) localStorage.removeItem("guestMode");
-      } else {
-        window.location.href = "neederSignIn.html";
+      // State
+      let donorsData = [],
+        currentPage = 1,
+        allAreas = [];
+      const itemsPerPage = 6;
+
+      // Auth Check
+      onAuthStateChanged(auth, (user) => {
+        const isGuest = localStorage.getItem("guestMode") === "true";
+
+        if (user || isGuest) {
+          if (!isGuest) logoutBtn.style.display = "block";
+          getDataAndRenderCards();
+          if (isGuest) localStorage.removeItem("guestMode");
+        } else {
+          window.location.href = "neederSignIn.html";
+        }
+      });
+
+      // Logout Handler
+      logoutBtn.onclick = async () => {
+        try {
+          await signOut(auth);
+          alert("You have been logged out.");
+          window.location.href = "neederSignIn.html";
+        } catch (err) {
+          console.error("Logout Error:", err);
+        }
+      };
+
+      // Filter Helpers
+      function filterDonors() {
+        const bg = bgFilter.value;
+        const area = areaFilter.value.trim().toLowerCase();
+        return donorsData.filter(
+          (d) =>
+            (!bg || d.bg === bg) &&
+            (!area || (d.address && d.address.toLowerCase().includes(area)))
+        );
       }
-    });
-
-    // Logout Handler
-    logoutBtn.onclick = async () => {
-      try {
-        await signOut(auth);
-        alert("You have been logged out.");
-        window.location.href = "neederSignIn.html";
-      } catch (err) {
-        console.error("Logout Error:", err);
+// pagination Helpers function
+      function renderPagination(total) {
+        const pages = Math.ceil(total / itemsPerPage);
+        pagination.innerHTML = "";
+        for (let i = 1; i <= pages; i++) {
+          const btn = document.createElement("button");
+          btn.textContent = i;
+          btn.className = `btn btn-sm ${
+            i === currentPage ? "btn-primary" : "btn-light"
+          } mx-1`;
+          btn.onclick = () => {
+            currentPage = i;
+            renderCards();
+          };
+          pagination.appendChild(btn);
+        }
       }
-    };
 
-    // Filter Helpers
-    function filterDonors() {
-      const bg = bgFilter.value;
-      const area = areaFilter.value.trim().toLowerCase();
-      return donorsData.filter(d =>
-        (!bg || d.bg === bg) &&
-        (!area || (d.address && d.address.toLowerCase().includes(area)))
-      );
-    }
+      function renderCards() {
+        const filtered = filterDonors();
+        const paginated = filtered.slice(
+          (currentPage - 1) * itemsPerPage,
+          currentPage * itemsPerPage
+        );
+        cardContainer.innerHTML = "";
 
-    function renderPagination(total) {
-      const pages = Math.ceil(total / itemsPerPage);
-      pagination.innerHTML = "";
-      for (let i = 1; i <= pages; i++) {
-        const btn = document.createElement("button");
-        btn.textContent = i;
-        btn.className = `btn btn-sm ${i === currentPage ? "btn-primary" : "btn-light"} mx-1`;
-        btn.onclick = () => { currentPage = i; renderCards(); };
-        pagination.appendChild(btn);
-      }
-    }
+        if (filtered.length === 0) {
+          cardContainer.innerHTML = `<p class="text-center text-muted w-100">😕 No donors found matching your filters.</p>`;
+          pagination.innerHTML = "";
+          return;
+        }
 
-    function renderCards() {
-  const filtered = filterDonors();
-  const paginated = filtered.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
-  cardContainer.innerHTML = "";
+        paginated.forEach((donorData) => {
+          const card = document.createElement("div");
+          card.className = "card";
 
-  if (filtered.length === 0) {
-    cardContainer.innerHTML = `<p class="text-center text-muted w-100">😕 No donors found matching your filters.</p>`;
-    pagination.innerHTML = "";
-    return;
-  }
+          const img = document.createElement("img");
+          img.src =
+            donorData.profilePhoto ||
+            "https://www.w3schools.com/w3images/avatar2.png";
+          img.alt = `${donorData.name || "User"}'s profile`;
+          card.appendChild(img);
 
-  paginated.forEach(donorData => {
-  const card = document.createElement("div");
-  card.className = "card";
+          ["name", "gender", "age", "bg", "availability", "address"].forEach(
+            (field) => {
+              const p = document.createElement("p");
 
-  const img = document.createElement("img");
-  img.src = donorData.profilePhoto || "https://www.w3schools.com/w3images/avatar2.png";
-  img.alt = `${donorData.name || "User"}'s profile`;
-  card.appendChild(img);
-
-  ["name", "gender", "age", "bg", "availability", "address"].forEach(field => {
-    const p = document.createElement("p");
-
-    if (field === "bg") {
-      p.innerHTML = `<strong>BG:</strong> <span style="color: #a40000;">
-                       <i class="fas fa-tint" style="margin-right: 4px;"></i>${donorData[field] || "N/A"}
+              if (field === "bg") {
+                p.innerHTML = `<strong>BG:</strong> <span style="color: #a40000;">
+                       <i class="fas fa-tint" style="margin-right: 4px;"></i>${
+                         donorData[field] || "N/A"
+                       }
                      </span>`;
-    } else if (field === "availability") {
-      const isAvailable = (donorData[field] || "").toLowerCase() === "available";
-      p.innerHTML = `<strong>Available:</strong> <span style="color: ${isAvailable ? "green" : "red"};">
+              } else if (field === "availability") {
+                const isAvailable =
+                  (donorData[field] || "").toLowerCase() === "available";
+                p.innerHTML = `<strong>Availability:</strong> <span style="color: ${
+                  isAvailable ? "green" : "red"
+                };">
                        ${donorData[field] || "N/A"}
                      </span>`;
-    } else {
-       // Fallback for other fields
-       p.textContent = `${field.toUpperCase()}: ${donorData[field] || "N/A"}`;
-    }
+              } else {
+                // Fallback for other fields
+                p.textContent = `${field.toUpperCase()}: ${
+                  donorData[field] || "N/A"
+                }`;
+              }
 
-    card.appendChild(p);
-  });
+              card.appendChild(p);
+            }
+          );
 
-  cardContainer.appendChild(card);
-});
+          cardContainer.appendChild(card);
+        });
 
-// Render pagination controls for the current filtered list
-renderPagination(filtered.length);
+        // Render pagination controls for the current filtered list
+        renderPagination(filtered.length);
+      }
 
-}
+      async function getDataAndRenderCards() {
+        loading.style.display = "block";
+        try {
+          const snapshot = await getDocs(collection(db, "donors"));
+          donorsData = snapshot.docs.map((doc) => doc.data());
+          allAreas = [
+            ...new Set(donorsData.map((d) => d.address || "")),
+          ].filter((a) => a);
+          renderCards();
+        } catch (err) {
+          cardContainer.innerHTML = `<p>Error loading donors: ${err.message}</p>`;
+        }
+        loading.style.display = "none";
+      }
 
-
-    async function getDataAndRenderCards() {
-      loading.style.display = "block";
-      try {
-        const snapshot = await getDocs(collection(db, "donors"));
-        donorsData = snapshot.docs.map(doc => doc.data());
-        allAreas = [...new Set(donorsData.map(d => d.address || ""))].filter(a => a);
+      // Filters: Clear
+      clearBtn.onclick = () => {
+        bgFilter.value = "";
+        areaFilter.value = "";
+        currentPage = 1;
         renderCards();
-      } catch (err) {
-        cardContainer.innerHTML = `<p>Error loading donors: ${err.message}</p>`;
-      }
-      loading.style.display = "none";
-    }
+      };
 
-    // Filters: Clear
-    clearBtn.onclick = () => {
-      bgFilter.value = "";
-      areaFilter.value = "";
-      currentPage = 1;
-      renderCards();
-    };
+      // Filters: Submit
+      searchForm.onsubmit = (e) => {
+        e.preventDefault();
+        currentPage = 1;
+        renderCards();
+      };
 
-    // Filters: Submit
-    searchForm.onsubmit = e => {
-      e.preventDefault();
-      currentPage = 1;
-      renderCards();
-    };
+      // Auto-Suggest Area
+      areaFilter.oninput = () => {
+        const input = areaFilter.value.toLowerCase();
+        const matches = allAreas
+          .filter((a) => a.toLowerCase().includes(input))
+          .slice(0, 5);
+        areaSuggestions.innerHTML = matches
+          .map((m) => `<div>${m}</div>`)
+          .join("");
+        areaSuggestions.style.display = matches.length ? "block" : "none";
+      };
 
-    // Auto-Suggest Area
-    areaFilter.oninput = () => {
-      const input = areaFilter.value.toLowerCase();
-      const matches = allAreas.filter(a => a.toLowerCase().includes(input)).slice(0, 5);
-      areaSuggestions.innerHTML = matches.map(m => `<div>${m}</div>`).join("");
-      areaSuggestions.style.display = matches.length ? "block" : "none";
-    };
+      areaSuggestions.onclick = (e) => {
+        if (e.target.tagName === "DIV") {
+          areaFilter.value = e.target.textContent;
+          areaSuggestions.innerHTML = "";
+        }
+      };
+    </script>
 
-    areaSuggestions.onclick = e => {
-      if (e.target.tagName === "DIV") {
-        areaFilter.value = e.target.textContent;
-        areaSuggestions.innerHTML = "";
-      }
-    };
-  </script>
-
-  <!-- Bootstrap JS -->
-  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    <!-- Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.2/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
