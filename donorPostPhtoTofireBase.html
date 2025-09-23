@@ -224,17 +224,6 @@
         }
       }
     };
-
-    // onAuthStateChanged(auth, (user) => {
-    //   if (donor.profilePhoto) {
-    //     document.getElementById("profilePhotoContainer").innerHTML = `<img src="${donor.profilePhoto}" class="profile-img" alt="Profile Photo" id="profilePicTopRight">`;
-    //   }
-    //   if (!user) {
-    //     window.location.href = "DonorsignIn.html";
-    //   } else {
-    //     displayDonorCard(user.uid);
-    //   }
-    // });
     onAuthStateChanged(auth, (user) => {
   if (!user) {
     window.location.href = "donorLogin.html";
