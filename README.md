@@ -112,14 +112,14 @@ Copy code
    ```bash
    git clone https://github.com/dineshkumar24v/JS_Project
    cd JS_Project
-   Open the main file
    ```
+**2.Open the main file**
 
-index.html
+- index.html
 
-Add your Firebase config & Cloudinary keys
+**3.Add your Firebase config & Cloudinary keys**
 
-Inside your JS files.
+- Inside your JS files.
 
 <h2>📸 Project Flow Chart Overview</h2>
 
