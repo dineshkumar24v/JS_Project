@@ -2,9 +2,13 @@
 
 A JavaScript / HTML / CSS based web application that allows donors and needy users to sign up / sign in, share and view blood donation requirements — helping connect donors with people in need.
 
+
+
  <h2>Overview</h2>
 
 This project is a simple, browser-based blood-donation portal built using plain HTML, CSS, and JavaScript. It enables two types of users: donors and needers. Donors can sign up / login and post donation availability or relevant details (like their readiness to donate). Needers can sign up / login and view available donors or donation posts. The aim is to enable easy access and matching between blood donors and people in need.
+
+
 
 <h2>🔧 Features</h2>
 
@@ -20,7 +24,10 @@ This project is a simple, browser-based blood-donation portal built using plain 
 
 ✅ Responsive HTML + CSS + JavaScript — no backend dependency (static-site style)
 
-🧰 Tech Stack
+
+
+
+<h2>🧰 Tech Stack</h2>
 
 HTML5 — for markup and page structure
 
@@ -30,7 +37,11 @@ JavaScript (vanilla) — for interactivity (index.js, form handling, image uploa
 
 Pure frontend — no framework, no backend API (pure static / client-side implementation)
 
-📁 Project Structure
+
+
+
+<h2>📁 Project Structure</h2>
+
 JS_Project/
 │── index.html ← Home / landing page
 │── index.css ← Main styling
@@ -48,7 +59,10 @@ JS_Project/
 │── vendor / assets / images/ ← Directory for images and static assets  
 │── README.md ← This documentation file
 
-🚀 How to Run Locally
+
+
+
+<h2>🚀 How to Run Locally</h2>
 
 Clone the repository
 
@@ -57,19 +71,41 @@ cd JS_Project
 
 Open index.html in your web browser.
 
-Since it’s a static site, no server or build step is required — just open the HTML file.
 
-📸 Screenshots / Demo
+
+
+
+<h2>📸 Project Flow Chart Overview</h2>
 
 #HOME_PAGE
 
 ![Home page screenshot](./images/home_page.png)  
+
+
+#DONOR_SIGNIN PAGE
+
 ![Donor sign-in screenshot](./images/donor_sign_in.png)  
+
+
+#DONOR_DETAILS_PAGE
+
 ![donor details page screenshot](./images/donor_details_page.png)  
+
+
+#DONATION_ELIGIBILITY
+
 ![Donation Rules page screenshot](./images/rules_page.png)
+
+
+#GALLERY_PAGE
+
 ![Gallery screenshot](./images/gallery.png)  
 
-🤝 How to Contribute
+
+
+
+
+<h2>🤝 How to Contribute</h2>
 
 Contributions are welcome! If you want to improve the project (e.g. add backend support, persistent storage, nicer UI, validation, search/filter, etc.), feel free to:
 
@@ -81,6 +117,5 @@ Commit your changes
 
 Open a Pull Request
 
-📄 License
 
-This project is open-source. Use a license of your choice — e.g. MIT License.
+
