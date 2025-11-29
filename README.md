@@ -86,25 +86,7 @@ This showcases my skills in building functional, scalable, cloud-connected appli
 
 - Fully responsive via Bootstrap 5
 
-<h2>📁 Project Structure</h2>
-JS_Project/
-│── index.html
-│── index.css
-│── index.js
-│── donorSignUp.html
-│── donorLogin.html
-│── neederSignUp.html
-│── neederSignIn.html
-│── adminLoginBS.html
-│── adminCRUD.html
-│── gallery.html
-│── finalDonorDetailsPage.html
-│── rules.html
-│── images/
-│── README.md
 
-bash
-Copy code
 
 <h2>📥 How to Run Locally</h2>
 
@@ -113,11 +95,11 @@ Copy code
    git clone https://github.com/dineshkumar24v/JS_Project
    cd JS_Project
    ```
-**2.Open the main file**
+2. **Open the main file**
 
 - index.html
 
-**3.Add your Firebase config & Cloudinary keys**
+3. **Add your Firebase config & Cloudinary keys**
 
 - Inside your JS files.
 
