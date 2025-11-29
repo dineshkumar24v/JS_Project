@@ -49,8 +49,6 @@ JS_Project/
 │── README.md               ← This documentation file  
 
 
-Note: Folder names and file names may vary; your actual repo includes an images/ folder (for uploaded or static images) and separate HTML/CSS/JS files for donor/needers/admin flows.
-
 🚀 How to Run Locally
 
 Clone the repository
@@ -63,7 +61,6 @@ Open index.html in your web browser.
 
 Since it’s a static site, no server or build step is required — just open the HTML file.
 
-(Optional) If uploading images or using advanced features — ensure paths in HTML/CSS/JS are correct.
 
 📸 Screenshots / Demo
 
