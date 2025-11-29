@@ -1,12 +1,12 @@
-🩸 <h1>Blood Donation Web Portal (JS_Project)</h1>
+ <h1>🩸Blood Donation Web Portal (JS_Project)</h1>
 
 A JavaScript / HTML / CSS based web application that allows donors and needy users to sign up / sign in, share and view blood donation requirements — helping connect donors with people in need.
 
-✅ Overview
+ <h2>Overview</h2>
 
 This project is a simple, browser-based blood-donation portal built using plain HTML, CSS, and JavaScript. It enables two types of users: donors and needers. Donors can sign up / login and post donation availability or relevant details (like their readiness to donate). Needers can sign up / login and view available donors or donation posts. The aim is to enable easy access and matching between blood donors and people in need.
 
-🔧 Features
+<h2>🔧 Features</h2>
 
 ✅ Sign up / Login for Donors
 
