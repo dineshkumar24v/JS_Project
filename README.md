@@ -1,4 +1,4 @@
-🩸 Blood Donation Web Portal (JS_Project)
+🩸 <h1>Blood Donation Web Portal (JS_Project)</h1>
 
 A JavaScript / HTML / CSS based web application that allows donors and needy users to sign up / sign in, share and view blood donation requirements — helping connect donors with people in need.
 
@@ -32,22 +32,21 @@ Pure frontend — no framework, no backend API (pure static / client-side implem
 
 📁 Project Structure
 JS_Project/
-│── index.html              ← Home / landing page
-│── index.css               ← Main styling
-│── index.js                ← JS logic
-│── donorSignUp.html        ← Donor sign-up page
-│── donorLogin.html         ← Donor login page
-│── neederSignUp.html       ← Needer sign-up page
-│── neederSignIn.html       ← Needer login page
-│── adminLoginBS.html       ← (Optional) Admin login page
-│── adminCRUD.html          ← (Optional) Admin page to manage data
-│── gallery.html            ← Page showing donor / request listings
+│── index.html ← Home / landing page
+│── index.css ← Main styling
+│── index.js ← JS logic
+│── donorSignUp.html ← Donor sign-up page
+│── donorLogin.html ← Donor login page
+│── neederSignUp.html ← Needer sign-up page
+│── neederSignIn.html ← Needer login page
+│── adminLoginBS.html ← (Optional) Admin login page
+│── adminCRUD.html ← (Optional) Admin page to manage data
+│── gallery.html ← Page showing donor / request listings
 │── finalDonorDetailsPage.html ← Donor details / confirmation page
 │── donorPostPhtoTofireBase.html ← (Possibly placeholder for image uploads)  
-│── rules.html              ← Rules / information page  
-│── vendor / assets / images/   ← Directory for images and static assets  
-│── README.md               ← This documentation file  
-
+│── rules.html ← Rules / information page  
+│── vendor / assets / images/ ← Directory for images and static assets  
+│── README.md ← This documentation file
 
 🚀 How to Run Locally
 
@@ -56,23 +55,19 @@ Clone the repository
 git clone https://github.com/dineshkumar24v/JS_Project.git
 cd JS_Project
 
-
 Open index.html in your web browser.
 
 Since it’s a static site, no server or build step is required — just open the HTML file.
 
-
 📸 Screenshots / Demo
 
-You can optionally capture screenshots of the key pages (home page, donor form, gallery / listing page, login / signup pages) and embed them here:
 #HOME_PAGE
 
 ![Home page screenshot](./images/home_page.png)  
-![Donor sign-up screenshot](./images/donor-signup.png)  
+![Donor sign-in screenshot](./images/donor_sign_in.png)  
+![donor details page screenshot](./images/donor_details_page.png)  
+![Donation Rules page screenshot](./images/rules_page.png)
 ![Gallery screenshot](./images/gallery.png)  
-
-
-Including visuals will make your project look much more professional to recruiters and other developers.
 
 🤝 How to Contribute
 
