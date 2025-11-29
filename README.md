@@ -67,7 +67,7 @@ Since it’s a static site, no server or build step is required — just open th
 You can optionally capture screenshots of the key pages (home page, donor form, gallery / listing page, login / signup pages) and embed them here:
 #HOME_PAGE
 
-![Home page screenshot](./images/home-page.png)  
+![Home page screenshot](./images/home_page.png)  
 ![Donor sign-up screenshot](./images/donor-signup.png)  
 ![Gallery screenshot](./images/gallery.png)  
 
